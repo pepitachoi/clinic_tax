@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="개원일과 진료 조건 4가지만 입력하면 병원에 맞는 1년 세무 일정을 월별로 보여드려요.">
-  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#155e75" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b2f39" media="(prefers-color-scheme: dark)">
   <title>우리 병원 1년 세무 일정</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="wrap">
-    <header class="top">
+    <header class="top hero">
       <p class="brand" id="brand"></p>
+      <svg class="hero-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="m8.5 14.5 2.3 2.3 4.7-4.7"/></svg>
       <h1>우리 병원 1년 세무 일정</h1>
       <p class="lead">4가지만 알려주시면 달마다 챙길 세무 일정을 정리해 드려요.</p>
     </header>
@@ -22,13 +23,13 @@
 
       <form id="form" class="card" novalidate>
         <label class="field">
-          <span class="label">개원일 <small>예정일도 괜찮아요</small></span>
+          <span class="label"><span class="step">1</span>개원일 <small>예정일도 괜찮아요</small></span>
           <input type="date" id="openDate" required>
           <span class="error" id="dateError" hidden></span>
         </label>
 
         <label class="field">
-          <span class="label">진료과목</span>
+          <span class="label"><span class="step">2</span>진료과목</span>
           <span class="select">
             <select id="dept" required>
               <option value="">불러오는 중…</option>
@@ -37,7 +38,7 @@
         </label>
 
         <fieldset class="field">
-          <legend class="label">미용 시술을 하시나요?</legend>
+          <legend class="label"><span class="step">3</span>미용 시술을 하시나요?</legend>
           <p class="hint" id="beautyHint"></p>
           <div class="seg">
             <label><input type="radio" name="beauty" value="Y"><span>예</span></label>
@@ -46,7 +47,7 @@
         </fieldset>
 
         <fieldset class="field">
-          <legend class="label">직원이 있나요? <small>채용 예정 포함</small></legend>
+          <legend class="label"><span class="step">4</span>직원이 있나요? <small>채용 예정 포함</small></legend>
           <div class="seg">
             <label><input type="radio" name="staff" value="Y"><span>예</span></label>
             <label><input type="radio" name="staff" value="N"><span>아니오</span></label>
@@ -54,7 +55,7 @@
         </fieldset>
 
         <button type="submit" class="btn" id="submit" disabled>일정 보기</button>
-        <p class="privacy">입력하신 내용은 어디에도 저장되지 않아요.</p>
+        <p class="privacy"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>입력하신 내용은 어디에도 저장되지 않아요.</p>
       </form>
 
       <section id="result" hidden>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>엔진 테스트</title>
+  <style>
+    body { font: 14px/1.5 -apple-system, "Apple SD Gothic Neo", sans-serif; margin: 24px; background: #fff; color: #111; }
+    .pass { color: #11703f; } .fail { color: #b42318; font-weight: 700; }
+    pre { white-space: pre-wrap; margin: 0 0 0 16px; color: #555; }
+  </style>
+</head>
+<body>
+  <h1 id="summary">테스트 실행 중…</h1>
+  <ol id="out"></ol>
+
+  <script src="../js/engine.js"></script>
+  <script src="engine.tests.js"></script>
+  <script>
+    var results = window.TaxEngineTests(window.TaxEngine);
+    var failed = results.filter(function (x) { return !x.ok; }).length;
+    var summary = document.getElementById('summary');
+    summary.textContent = failed ? '실패 ' + failed + ' / ' + results.length : '전부 통과 ' + results.length + '개';
+    summary.className = failed ? 'fail' : 'pass';
+    document.getElementById('out').innerHTML = results.map(function (x) {
+      return '<li class="' + (x.ok ? 'pass' : 'fail') + '">' + (x.ok ? '✓ ' : '✗ ') + x.name +
+        (x.detail ? '<pre>' + x.detail.replace(/</g, '&lt;') + '</pre>' : '') + '</li>';
+    }).join('');
+  </script>
+</body>
+</html>

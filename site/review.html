@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>세무 일정 규칙 검수</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap wide">
+    <header class="top">
+      <span class="admin-tag">관리자용 · 고객에게 보내지 마세요</span>
+      <h1>규칙 검수</h1>
+      <p class="lead">조건 조합별로 어떤 일정이 나오는지 한 번에 확인해요. 시트를 고친 뒤 "시트 다시 읽기"를 누르세요.</p>
+    </header>
+
+    <div class="card controls">
+      <label>기준 개원일 <input type="date" id="rOpen"></label>
+      <label>진료과목 <span class="select"><select id="rDept"></select></span></label>
+      <label>오늘 날짜(가정) <input type="date" id="rToday"></label>
+      <button type="button" class="btn small" id="reload">시트 다시 읽기</button>
+    </div>
+    <p class="status" id="status">불러오는 중…</p>
+
+    <div id="problems"></div>
+
+    <h2 class="section-title">조건 조합별 결과</h2>
+    <p class="section-sub" id="periodText"></p>
+    <div class="table-wrap"><table class="matrix" id="matrix"></table></div>
+
+    <h2 class="section-title" id="previewTitle">고객 화면 미리보기</h2>
+    <p class="section-sub">위 표의 조합 버튼을 누르면 바뀌어요.</p>
+    <div class="preview" id="preview"></div>
+
+    <h2 class="section-title">CSV 내려받기</h2>
+    <p class="section-sub">지금 쓰는 데이터를 구글 시트에 가져올 때 써요(docs/04_운영_가이드.md).</p>
+    <div class="export">
+      <button type="button" class="btn small ghost" data-export="rules">규칙.csv</button>
+      <button type="button" class="btn small ghost" data-export="depts">진료과목.csv</button>
+      <button type="button" class="btn small ghost" data-export="settings">설정.csv</button>
+    </div>
+
+    <footer class="foot"><a href="./">고객 화면으로</a></footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/review.js"></script>
+</body>
+</html>

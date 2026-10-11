@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="개원일과 진료 조건 4가지만 입력하면 병원에 맞는 1년 세무 일정을 월별로 보여드려요.">
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <title>우리 병원 1년 세무 일정</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <p class="brand" id="brand"></p>
+      <h1>우리 병원 1년 세무 일정</h1>
+      <p class="lead">4가지만 알려주시면 달마다 챙길 세무 일정을 정리해 드려요.</p>
+    </header>
+
+    <main>
+      <p class="notice" id="loadNotice" hidden></p>
+
+      <form id="form" class="card" novalidate>
+        <label class="field">
+          <span class="label">개원일 <small>예정일도 괜찮아요</small></span>
+          <input type="date" id="openDate" required>
+          <span class="error" id="dateError" hidden></span>
+        </label>
+
+        <label class="field">
+          <span class="label">진료과목</span>
+          <span class="select">
+            <select id="dept" required>
+              <option value="">불러오는 중…</option>
+            </select>
+          </span>
+        </label>
+
+        <fieldset class="field">
+          <legend class="label">미용 시술을 하시나요?</legend>
+          <p class="hint" id="beautyHint"></p>
+          <div class="seg">
+            <label><input type="radio" name="beauty" value="Y"><span>예</span></label>
+            <label><input type="radio" name="beauty" value="N"><span>아니오</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="label">직원이 있나요? <small>채용 예정 포함</small></legend>
+          <div class="seg">
+            <label><input type="radio" name="staff" value="Y"><span>예</span></label>
+            <label><input type="radio" name="staff" value="N"><span>아니오</span></label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn" id="submit" disabled>일정 보기</button>
+        <p class="privacy">입력하신 내용은 어디에도 저장되지 않아요.</p>
+      </form>
+
+      <section id="result" hidden>
+        <div class="result-bar">
+          <button type="button" class="back" id="back">← 다시 입력</button>
+          <a class="jump" id="jumpNow" href="#" hidden>이번 달로 ↓</a>
+        </div>
+        <div class="chips" id="chips"></div>
+        <p class="notice" id="draftNotice" hidden>검수 전 예시 일정이 포함되어 있어요. 실제 일정은 담당 세무사와 확인하세요.</p>
+        <div id="schedule"></div>
+      </section>
+    </main>
+
+    <footer class="foot" id="footer"></footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

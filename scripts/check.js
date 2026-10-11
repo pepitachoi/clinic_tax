@@ -92,6 +92,10 @@ function run(argv) {
         if (!url) throw new Error('config.js에 주소가 없어요');
         texts[k] = shell('curl -fsSL --max-time 15 ' + quote(url));
         if (!E.looksLike(texts[k], TAB_FIRST[k])) throw new Error('첫 칸이 "' + TAB_FIRST[k] + '"가 아니에요(웹에 게시한 CSV 주소인지 확인)');
+        // curl은 CORS를 안 따지므로, 배포된 사이트(https)에서 브라우저가 처음 받는 응답에 허용 헤더가 있는지 따로 본다.
+        // 구글은 파일로 연 페이지(Origin: null)는 어떤 주소든 막는다. 그래서 file://로 열면 시트 대신 기본 데이터가 나온다.
+        var head = shell('curl -sS -o /dev/null -D - --max-time 15 -H "Origin: https://example.com" ' + quote(url));
+        if (!/^access-control-allow-origin:/im.test(head)) throw new Error('브라우저에서 읽기가 막히는 주소예요(CORS). 웹에 게시한 CSV 주소를 넣어 주세요');
         status.push(k + '=시트');
       } else if (source === 'files' && opt[k]) {
         texts[k] = readFile(opt[k]);

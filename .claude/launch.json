@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "site",
-      "runtimeExecutable": "ruby",
-      "runtimeArgs": ["-run", "-e", "httpd", "site", "-p", "8080"],
-      "port": 8080
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "exec ruby -run -e httpd site -p \"${PORT:-8080}\""],
+      "port": 8080,
+      "autoPort": true
     }
   ]
 }

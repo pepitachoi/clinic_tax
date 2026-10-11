@@ -59,7 +59,8 @@
   - macOS 내장 JS로 실행되므로 Node가 없어도 된다. 끝 코드가 0이 아니면 문제가 있다는 뜻이다.
 - `scripts/deploy.sh`: `package`(점검 후 zip) / `netlify --yes`(환경변수 토큰으로 업로드) / `verify 주소`(배포본 비교)
 - `.claude/agents/tax-schedule-ops.md`: docs/04 운영 절차를 대신 수행하는 에이전트
-- 로컬 실행: `ruby -run -e httpd site -p 8080` (`.claude/launch.json`의 `site`)
+- 로컬 실행: 서버 없이 `site/index.html`(검수는 `site/review.html`)을 브라우저로 바로 연다(`open site/index.html`). 시트 주소가 비어 있으면 `data.js`만 쓰므로 `file://`로 동작한다.
+  - 서버가 필요하면 `ruby -run -e httpd site -p 8080` (`.claude/launch.json`의 `site`, 포트 자동 배정)
 - 엔진이나 테스트를 고친 뒤에는 `scripts/check.js`가 통과해야 한다.
 - 규칙을 바꾸면 `docs/05_규칙_변경이력.md`에 기록한다.
 - 데이터 읽기 순서: 시트 → 마지막으로 읽은 시트 사본(localStorage, 규칙만) → `data.js`

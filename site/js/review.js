@@ -100,7 +100,7 @@
       ' · 칸에 마우스를 올리면 날짜 전체가 보여요.';
     renderMatrix(d, scheds);
     $('previewTitle').textContent = '고객 화면 미리보기 · ' + $('rDept').value + ' · ' + COMBOS[state.combo].label;
-    $('preview').innerHTML = UI.renderSchedule(scheds[state.combo]);
+    $('preview').innerHTML = UI.renderSchedule(scheds[state.combo], d.settings);
   }
 
   function download(key) {

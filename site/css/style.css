@@ -188,6 +188,7 @@ details[open] .chev { transform: rotate(-135deg); margin-top: 12px; }
 .more { padding: 0 14px 14px 70px; font-size: 15px; }
 .more p { margin: 0 0 6px; }
 .basis { color: var(--muted); font-size: 13px; }
+.item-contact { font-weight: 600; }
 .empty { margin: 0 0 8px; font-size: 14px; color: var(--faint); }
 
 .foot { margin-top: 28px; padding: 20px 0 40px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }

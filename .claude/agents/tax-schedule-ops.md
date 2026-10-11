@@ -63,6 +63,7 @@ description: 병의원 세무 일정 사이트의 운영 작업을 docs/04_운�
    - 파일마다: 파일 > 공유 > 웹에 게시 > 형식 CSV > 게시 > 주소 복사
 5. 관리자가 주소 3개를 주면:
    - 주소가 `https://docs.google.com/spreadsheets/d/e/.../pub?...output=csv` 형태인지 확인한다.
+   - 편집 주소(`/d/<ID>/edit...`)나 `/export?format=csv` 주소는 쓰지 않는다. curl로는 읽혀도 브라우저에서는 CORS로 막힌다. "웹에 게시" 주소를 다시 받는다.
    - `site/js/config.js`에 넣는다.
    - `check.js`(sheet 모드)로 읽기와 검수가 통과하는지 확인한다.
    - config.js가 바뀌었으니 배포가 다시 필요하다고 보고한다.

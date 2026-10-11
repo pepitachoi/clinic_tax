@@ -59,7 +59,7 @@
       chip(input.dept) +
       chip(input.beauty === 'Y' ? '미용 시술 함' : '미용 시술 안 함') +
       chip(input.staff === 'Y' ? '직원 있음' : '직원 없음');
-    $('schedule').innerHTML = UI.renderSchedule(s);
+    $('schedule').innerHTML = UI.renderSchedule(s, state.data.settings);
     $('draftNotice').hidden = !s.items.some(function (it) { return String(it.rule['상태']).trim() !== '확정'; });
 
     var current = document.querySelector('.month.current');
